@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CustomChat2</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_cnv">CnvActivity</string>
+    <string name="title_activity_msgr">MsgrActivity</string>
+</resources>
