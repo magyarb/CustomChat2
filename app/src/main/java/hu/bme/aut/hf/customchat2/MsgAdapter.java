@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Balázs on 2015.05.17..
@@ -47,6 +48,7 @@ public class MsgAdapter extends BaseAdapter {
         RelativeLayout relativeLayout = (RelativeLayout) itemView.findViewById(R.id.msglayout);
         if(item.senderID != Session.user.id) {
             relativeLayout.setBackgroundColor(Color.parseColor("#FFFFA293"));
+            relativeLayout.setGravity(Gravity.LEFT);
         }
 
         TextView textViewNew = (TextView) itemView.findViewById(R.id.message); //meg a szövegeket, és be is állítjuk
