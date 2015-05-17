@@ -1,12 +1,14 @@
 package hu.bme.aut.hf.customchat2;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MsgrActivity extends ActionBarActivity {
+public class MsgrActivity extends AppCompatActivity implements MsgFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +32,15 @@ public class MsgrActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent i = new Intent(this.getApplicationContext(),SettingsActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(String id) {
+        
     }
 }

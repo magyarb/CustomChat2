@@ -1,7 +1,7 @@
 package hu.bme.aut.hf.customchat2;
 
 /**
- * Created by Balázs on 2015.05.17..
+ * Created by Balazs on 2015.05.17..
  */
 public class User {
     public User(int id, String name, String hashedPw) {

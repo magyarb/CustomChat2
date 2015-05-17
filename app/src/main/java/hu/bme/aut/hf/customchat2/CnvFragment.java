@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
+import java.sql.SQLException;
+
+import hu.bme.aut.hf.customchat2.db.DBLoader;
 import hu.bme.aut.hf.customchat2.dummy.DummyContent;
 
 /**
@@ -19,24 +22,11 @@ import hu.bme.aut.hf.customchat2.dummy.DummyContent;
  */
 public class CnvFragment extends ListFragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     private OnFragmentInteractionListener mListener;
 
     // TODO: Rename and change types of parameters
     public static CnvFragment newInstance(String param1, String param2) {
         CnvFragment fragment = new CnvFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -50,15 +40,18 @@ public class CnvFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        //DB reading
+        DBLoader dbLoader = new DBLoader(this.getActivity());
+        try {
+            dbLoader.open();
+            dbLoader.reloadCnvCache(Session.user.id);
+            dbLoader.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         // TODO: Change Adapter to display your content
-        setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS));
+        setListAdapter(new CnvAdapter(this.getActivity().getApplicationContext(), Session.cnvCache));
     }
 
 
@@ -82,11 +75,13 @@ public class CnvFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-
+        Session.cnv = Session.cnvCache.get(position);
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+            int id2 = Session.cnvCache.get(position).id;
+
+            mListener.onFragmentInteraction(Integer.toString(id2));
         }
     }
 

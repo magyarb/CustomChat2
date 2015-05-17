@@ -1,12 +1,14 @@
 package hu.bme.aut.hf.customchat2;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class CnvActivity extends ActionBarActivity {
+public class CnvActivity extends AppCompatActivity implements CnvFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +32,18 @@ public class CnvActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent i = new Intent(this.getApplicationContext(),SettingsActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(String id) {
+        if(Session.cnv != null) {
+            Intent i = new Intent(this.getApplicationContext(), MsgrActivity.class);
+            startActivity(i);
+        }
     }
 }

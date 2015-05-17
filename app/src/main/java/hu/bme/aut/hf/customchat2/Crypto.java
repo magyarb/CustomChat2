@@ -1,4 +1,4 @@
-package hu.bme.aut.hf.customchat;
+package hu.bme.aut.hf.customchat2;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
