@@ -36,6 +36,10 @@ public class LoginActivity extends Activity {
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //start location service
+                Intent li = new Intent(getApplicationContext(), ServiceLocation.class);
+                startService(li);
+
                 //get textboxes
                 String login = ((TextView)findViewById(R.id.editText3)).getText().toString();
                 String pass = ((TextView)findViewById(R.id.editText4)).getText().toString();

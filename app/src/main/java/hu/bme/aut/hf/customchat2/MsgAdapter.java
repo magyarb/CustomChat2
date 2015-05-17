@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -45,17 +46,23 @@ public class MsgAdapter extends BaseAdapter {
                 Context.LAYOUT_INFLATER_SERVICE);
         View itemView = inflater.inflate(R.layout.msg, null);
 
-        RelativeLayout relativeLayout = (RelativeLayout) itemView.findViewById(R.id.msglayout);
-        if(item.senderID != Session.user.id) {
-            relativeLayout.setBackgroundColor(Color.parseColor("#FFFFA293"));
-            relativeLayout.setGravity(Gravity.LEFT);
+        TextView textViewMsg = (TextView) itemView.findViewById(R.id.message); //meg a szövegeket, és be is állítjuk
+        textViewMsg.setText(item.msg);
+
+        TextView textViewStamp = (TextView) itemView.findViewById(R.id.stamp);
+        textViewStamp.setText(item.geocode + "@" + item.timestamp); //TODO other ppl
+
+        //ha kell, áttoljuk
+        LinearLayout layout = (LinearLayout) itemView.findViewById(R.id.msglayout);
+        LinearLayout wlayout = (LinearLayout) itemView.findViewById(R.id.msgwhole);
+        if(item.senderID != Session.user.id) { //ha miénk az üzenet
+            layout.setGravity(Gravity.RIGHT);
+            wlayout.setGravity(Gravity.RIGHT);
         }
+        else
+            layout.setBackgroundColor(Color.parseColor("#FFFFA293"));
 
-        TextView textViewNew = (TextView) itemView.findViewById(R.id.message); //meg a szövegeket, és be is állítjuk
-        textViewNew.setText(item.msg);
 
-        TextView textViewCnv = (TextView) itemView.findViewById(R.id.stamp);
-        textViewCnv.setText(item.geocode + "@" + item.timestamp); //TODO other ppl
 
         return itemView;
     }

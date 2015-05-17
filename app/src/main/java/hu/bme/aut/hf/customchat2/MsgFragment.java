@@ -1,10 +1,13 @@
 package hu.bme.aut.hf.customchat2;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -51,6 +54,8 @@ public class MsgFragment extends ListFragment {
         }
         showToast(Integer.toString(Session.msgCache.size()));
         setListAdapter(new MsgAdapter(this.getActivity().getApplicationContext(), Session.msgCache));
+
+
     }
     public void showToast(String message){
         Toast.makeText(this.getActivity(), message, Toast.LENGTH_LONG).show();
