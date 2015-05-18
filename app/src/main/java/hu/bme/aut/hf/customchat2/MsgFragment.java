@@ -27,6 +27,7 @@ import hu.bme.aut.hf.customchat2.dummy.DummyContent;
 public class MsgFragment extends ListFragment {
 
     private OnFragmentInteractionListener mListener;
+    public MsgAdapter a;
 
     public static MsgFragment newInstance() {
         MsgFragment fragment = new MsgFragment();
@@ -53,9 +54,8 @@ public class MsgFragment extends ListFragment {
             e.printStackTrace();
         }
         showToast(Integer.toString(Session.msgCache.size()));
-        setListAdapter(new MsgAdapter(this.getActivity().getApplicationContext(), Session.msgCache));
-
-
+        a = new MsgAdapter(this.getActivity().getApplicationContext(), Session.msgCache);
+        setListAdapter(a);
     }
     public void showToast(String message){
         Toast.makeText(this.getActivity(), message, Toast.LENGTH_LONG).show();

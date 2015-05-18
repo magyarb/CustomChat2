@@ -1,7 +1,12 @@
 package hu.bme.aut.hf.customchat2;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,6 +36,7 @@ public class LoginActivity extends Activity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         //Button handle
         Button loginbutton = (Button) findViewById(R.id.button2);
         loginbutton.setOnClickListener(new View.OnClickListener() {

@@ -55,7 +55,7 @@ public class MsgAdapter extends BaseAdapter {
         //ha kell, áttoljuk
         LinearLayout layout = (LinearLayout) itemView.findViewById(R.id.msglayout);
         LinearLayout wlayout = (LinearLayout) itemView.findViewById(R.id.msgwhole);
-        if(item.senderID != Session.user.id) { //ha miénk az üzenet
+        if(item.senderID == Session.user.id) { //ha miénk az üzenet
             layout.setGravity(Gravity.RIGHT);
             wlayout.setGravity(Gravity.RIGHT);
         }
