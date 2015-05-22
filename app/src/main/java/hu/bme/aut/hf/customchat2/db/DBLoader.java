@@ -76,20 +76,18 @@ public class DBLoader { //TODO MSG, CV
     {
 
         Session.cnvCache = new ArrayList<>();
-        Session.cnvCache.add(new Cnv(4, 1, 2));
-        Session.cnvCache.add(new Cnv(5, 2, 1));
-        Session.cnvCache.add(new Cnv(6, 1, 1));
-        Session.cnvCache.add(new Cnv(7, 2, 2));
+        Session.cnvCache.add(new Cnv(4, "Humbák Feri", 2));
+        Session.cnvCache.add(new Cnv(5, "Töttös Géza", 1));
+        Session.cnvCache.add(new Cnv(6, "Kalányos Ronáldó", 1));
+        Session.cnvCache.add(new Cnv(7, "Szalonnás Piri", 2));
     }
     public void reloadMsgCache(int cnvid) //TODO DEBUG STATE
     {
 
         Session.msgCache = new ArrayList<>();
-        Session.msgCache.add(new Msg(1,1,1,"message1","geocode1","timestamp1"));
-        Session.msgCache.add(new Msg(2,1,2,"message1","geocode2","timestamp2"));
-        Session.msgCache.add(new Msg(1,2,1,"message3","geocode3","timestamp3"));
-        Session.msgCache.add(new Msg(4,2,4,"message4","geocode4","timestamp4"));
-        Session.msgCache.add(new Msg(5,1,5,"message5","geocode5","timestamp5"));
+        Session.msgCache.add(new Msg(1,1,1,"Mikor kezdődik holnap a napfogyatkozás?","Humbákfalva","11:20"));
+        Session.msgCache.add(new Msg(2,1,2,"fél10","Máriakálnok","11:23"));
+        Session.msgCache.add(new Msg(1,2,1,"Este vagy reggel 10?","Humbákfalva","11:25"));
     }
 
     // CRUD és egyéb metódusok

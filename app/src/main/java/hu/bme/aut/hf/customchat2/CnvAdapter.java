@@ -45,7 +45,7 @@ public class CnvAdapter extends BaseAdapter {
         textViewNew.setText(Integer.toString(item.id)+ " new"); //TODO new messages
 
         TextView textViewCnv = (TextView) itemView.findViewById(R.id.cnvname);
-        textViewCnv.setText(Integer.toString(item.uid1)); //TODO other ppl
+        textViewCnv.setText(item.uid1); //TODO other ppl
 
         return itemView;
     }

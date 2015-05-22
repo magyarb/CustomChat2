@@ -1,11 +1,7 @@
 package hu.bme.aut.hf.customchat2;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.ListPreference;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -22,7 +18,7 @@ import hu.bme.aut.hf.customchat2.db.DBLoader;
 
 
 public class LoginActivity extends Activity {
-    private boolean debugMode = true; //
+    private boolean debugMode = false; //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +32,6 @@ public class LoginActivity extends Activity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         //Button handle
         Button loginbutton = (Button) findViewById(R.id.button2);
         loginbutton.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +40,7 @@ public class LoginActivity extends Activity {
                 //start location service
                 Intent li = new Intent(getApplicationContext(), ServiceLocation.class);
                 startService(li);
-
+                PreferenceManager.getDefaultSharedPreferences(LoginActivity.this).getBoolean("example_checkbox", false);
                 //get textboxes
                 String login = ((TextView)findViewById(R.id.editText3)).getText().toString();
                 String pass = ((TextView)findViewById(R.id.editText4)).getText().toString();

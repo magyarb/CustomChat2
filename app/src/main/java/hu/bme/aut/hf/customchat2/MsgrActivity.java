@@ -29,6 +29,7 @@ public class MsgrActivity extends AppCompatActivity implements MsgFragment.OnFra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_msgr);
         Button b = (Button) findViewById(R.id.sendbtn);
+        setTitle("Humbák Feri");
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
